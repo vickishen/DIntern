@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <script src='js/jquery-2.1.4.min.js'></script>
+    <script>
+      var name;
+      $(function(){
+        name = getUrlParameter('name');
+        $('#title').html('Hello '+ name);
+        $('#msgBtn').click(function(){
+          var msg = name + ' : ' + $('#msgInput').val();
+          $('#msgTextarea').val($('#msgTextarea').val() + msg + '\n');
+          $('#msgInput').val('');
+        });
+      })
+      function getUrlParameter(sParam)
+      {
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split('&');
+        for (var i = 0; i < sURLVariables.length; i++) 
+        {
+          var sParameterName = sURLVariables[i].split('=');
+          if (sParameterName[0] == sParam) 
+          {
+            return sParameterName[1];
+          }
+        }
+      }          
+    </script>
+  </head>
+  <body>
+    <div id='chatDiv'>
+      <h1 id='title'></h1>
+      <textarea id='msgTextarea' rows='10' cols='80'></textarea>
+      <br>
+      <input id='msgInput' type='text' />
+      <input id='msgBtn' type='button' value='Send' />
+    </div>
+  </body>
+</html>

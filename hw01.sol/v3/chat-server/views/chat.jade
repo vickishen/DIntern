@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  script.
+    $(function(){
+      $('#msgBtn').click(function(){
+        var msg = '#{name}' + ' : ' + $('#msgInput').val();
+        $('#msgTextarea').val($('#msgTextarea').val() + msg + '\n');
+        $('#msgInput').val('');
+      });
+    
+    })
+  h1 Hello #{name}
+  textarea#msgTextarea(rows='10' cols='80')
+  br
+  input#msgInput(type='text')
+  input#msgBtn(type='button' value='Send')
